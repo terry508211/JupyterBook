@@ -5,5 +5,7 @@ logo: _static/logo.png
 language: "zh"
 
 html:
-  favicon: _static/logo.png  # 這會是瀏覽器的小圖示
-  navbar_logo: true          # 如果主題支援，會顯示在導覽列左側
+  favicon: _static/logo.png  
+  navbar_logo: true          
+  toc:
+    use_permalinks: false

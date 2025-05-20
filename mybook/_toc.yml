@@ -1,4 +1,15 @@
 format: jb-book
 root: intro
-chapters:
-  - file: notebook
+parts:
+  - caption: 頁面操作
+    numbered: True
+    permalink: false
+    chapters:
+     - file: _parts/part1/chapter1
+     - file: _parts/part1/chapter2
+     - file: _parts/part1/chapter3
+     - file: _parts/part1/chapter4
+  #- caption: 檢測流程
+    # chapters:
+    # - file: path/to/part2/chapter1
+    # - file: path/to/part2/chapter2
