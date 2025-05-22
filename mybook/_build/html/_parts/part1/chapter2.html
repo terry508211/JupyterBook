@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. 因子檢測 &#8212; FactorLib 因子分析平台</title>
+    <title>2. 因子看板 &#8212; FactorLib 因子分析平台</title>
   
   
   
@@ -61,7 +61,7 @@
     <link rel="icon" href="../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3. 因子看板" href="chapter3.html" />
+    <link rel="next" title="3. 因子檢測123" href="chapter3.html" />
     <link rel="prev" title="1. 因子總覽" href="chapter1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,8 +183,8 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">頁面操作</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="chapter1.html">1. 因子總覽</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 因子檢測</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. 因子看板</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 因子看板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. 因子檢測123</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter4.html">4. 策略Studio</a></li>
 </ul>
 
@@ -324,7 +324,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>因子檢測</h1>
+    <h1>因子看板</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -334,10 +334,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 檢測列表</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 打開報表</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 編輯檢測</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 建立新檢測</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 看板列表</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 股票池設定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 因子欄位設定</a></li>
 </ul>
             </nav>
         </div>
@@ -350,18 +349,36 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">2. </span>因子檢測<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">2. </span>因子看板<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>查詢個股因子值，主要支援兩種模式，一為t日全市場中所有股票之因子值，二為任意一檔股票起自2013年至最新一日所有期間的因子值。</p>
+<!-- :::{contents}
+:local:
+:depth: 2
+::: -->
 <section id="id2">
-<h2><span class="section-number">2.1. </span>檢測列表<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.1. </span>看板列表<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>列表左側固定顯示公司代碼、名稱、市值（千元）、成交量（張）、成交金額（千元）、市場別與產業名稱等資訊，右側顯示欲查看之因子數值。</p>
+<p>下圖為全市場於2025/02/27所有上下市櫃全產業公司的因子資料，選擇dp、sue、ia和mom6等四個因子作為範例。</p>
+<p><img alt="看板1" src="../../_images/panel0.png" /></p>
+<p>若要查詢單一個股起自2013年以來之因子值，需要於紅線處輸入欲查詢之股票代碼，僅限純數字格式。</p>
+<p>下圖為台積電（2330）起自2013/01/01至2025/02/27期間的因子看板範例，同樣以dp、sue、ia和mom6等四個因子作為範例。</p>
+<p><img alt="看板2" src="../../_images/panel1.png" /></p>
+<p>看板中所有因子欄位均支援條件篩選，欄位標頭處點擊「≡」符號後，即可選擇各類大於小於等於運算子的條件篩選。</p>
+<p>下圖為針對gpa因子篩選大於等於0.5的示意圖。</p>
+<p><img alt="看板3" src="../../_images/panel2.png" /></p>
 </section>
 <section id="id3">
-<h2><span class="section-number">2.2. </span>打開報表<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.2. </span>股票池設定<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>若要變更看板顯示之股票池，請點選因子看板上方的「股票池設定」，即可從中篩選市場別、板塊別、證券別和產業別等四大分類，協助使用者快速聚焦於想查看的市場中。</p>
+<p><img alt="看板4" src="../../_images/panel3.png" /></p>
 </section>
 <section id="id4">
-<h2><span class="section-number">2.3. </span>編輯檢測<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-</section>
-<section id="id5">
-<h2><span class="section-number">2.4. </span>建立新檢測<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.3. </span>因子欄位設定<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>若要新增看板顯示的因子欄位，點選因子看板上方的「因子欄位設定」，選擇欲查看之因子並點擊確認，系統將抓取對應的欄位資料進行顯示。此外，因子同樣支援下拉視窗，顯示該因子的概念與計算說明。</p>
+<p><img alt="看板5" src="../../_images/panel4.png" /></p>
+<p>此外，若使用者想暫時性顯示部分因子，可與下拉選單中的因子名稱互動，即可變更當前因子列表顯示的因子欄位。如下圖從原本的四個因子中暫時去除掉MOM6動能因子，則列表將只顯示BM、DP與EP等三個因子。</p>
+<p><img alt="看板6" src="../../_images/panel5.png" /></p>
+<p><img alt="看板7" src="../../_images/panel6.png" /></p>
 </section>
 </section>
 
@@ -409,7 +426,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>因子看板</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>因子檢測123</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -429,10 +446,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 檢測列表</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 打開報表</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 編輯檢測</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 建立新檢測</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 看板列表</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 股票池設定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 因子欄位設定</a></li>
 </ul>
   </nav></div>
 

@@ -6,9 +6,17 @@ parts:
     permalink: false
     chapters:
      - file: _parts/part1/chapter1
+       title: 因子總覽
+
      - file: _parts/part1/chapter2
+       title: 因子看板
+
      - file: _parts/part1/chapter3
+       title: 因子檢測
+
      - file: _parts/part1/chapter4
+       title: 策略Studio
+
   #- caption: 檢測流程
     # chapters:
     # - file: path/to/part2/chapter1
