@@ -17,7 +17,13 @@ parts:
      - file: _parts/part1/chapter4
        title: 策略Studio
 
-  #- caption: 檢測流程
-    # chapters:
-    # - file: path/to/part2/chapter1
-    # - file: path/to/part2/chapter2
+  - caption: 因子檢測流程
+    numbered: True
+    permalink: false
+    chapters:
+     - file: _parts/part2/chapter1
+       title: 多因子合成方法
+
+     - file: _parts/part2/chapter2
+       title: 股票池與回測期間參數
+

@@ -9,3 +9,4 @@ html:
   navbar_logo: true          
   toc:
     use_permalinks: false
+  use_multitoc_numbering: false
