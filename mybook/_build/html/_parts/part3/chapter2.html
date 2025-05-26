@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. 股票池與回測期間參數 &#8212; FactorLib 因子分析平台</title>
+    <title>2. 因子分析 &#8212; FactorLib 因子分析平台</title>
   
   
   
@@ -57,12 +57,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_parts/part2/chapter2';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_parts/part3/chapter2';</script>
     <link rel="icon" href="../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1. 敘述統計" href="../part3/chapter1.html" />
-    <link rel="prev" title="1. 多因子合成方法" href="chapter1.html" />
+    <link rel="prev" title="1. 敘述統計" href="chapter1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,14 +189,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../part1/chapter4.html">4. 策略Studio</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">因子檢測流程</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="chapter1.html">1. 多因子合成方法</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 股票池與回測期間參數</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part2/chapter1.html">1. 多因子合成方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part2/chapter2.html">2. 股票池與回測期間參數</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">因子檢測分析</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../part3/chapter1.html">1. 敘述統計</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../part3/chapter2.html">2. 因子分析</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">1. 敘述統計</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 因子分析</a></li>
 </ul>
 
     </div>
@@ -250,7 +251,7 @@
       
       
       
-      <li><a href="../../_sources/_parts/part2/chapter2.md" target="_blank"
+      <li><a href="../../_sources/_parts/part3/chapter2.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +335,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>股票池與回測期間參數</h1>
+    <h1>因子分析</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -344,12 +345,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 交易市場</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 產業篩選</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 個股市值</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 回測歷史</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.5. 再平衡頻率</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6. 排除股票</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ic">2.1. IC資訊係數檢定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2. 分組報酬單調性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3. 分組週轉率</a></li>
 </ul>
             </nav>
         </div>
@@ -362,38 +360,83 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">2. </span>股票池與回測期間參數<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>前面步驟選擇完因子後，將針對股票池與回測期間進行調整，主要根據股票於再平衡t日時所屬的交易市場、產業別、市值大小和交易限制（警示股、全額交割股）等狀況進行排除。</p>
-<p><img alt="看板1" src="../../_images/test5.png" /></p>
-<p>註：因子檢測股票池篩選順序為交易市場 → 產業別 → 交易限制 → 市值大小 → 因子分組。</p>
+<h1><span class="section-number">2. </span>因子分析<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>分析因子對未來報酬之預測能力（IC）、區分未來股票高低報酬區間的能力（分組單調性）與因子值變動的頻率與持續性（分組週轉率）。</p>
 <!-- :::{contents}
 :local:
 :depth: 2
 ::: -->
+<section id="ic">
+<h2><span class="section-number">2.1. </span>IC資訊係數檢定<a class="headerlink" href="#ic" title="Link to this heading">#</a></h2>
+<p>檢驗t日因子值與t+N日期間報酬的相關性，相關性絕對值越高代表因子預測個股未來報酬能力越好。由於Pearson要求資料為常態分布，若非常態分布容易失準，因此均使用Spearman相關係數進行計算，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rank IC}_t = \text{Corr}\left(x_{\text{rank}}^t,\ \text{ret}_{\text{rank}}^{t+N} \right)
+\]</div>
+<p>其中因子在t日的IC值，使用t日排序後因子值與t日至t+N日的排序後個股報酬連乘的共變異數，除以t日排序後因子值標準差和t+N日的排序後個股報酬標準差。
+N日依照使用者前面選擇的投組再平衡頻率各有不同，若選擇每月初再平衡則N為21日；每週初再平衡為5日；每日初再平衡為1日。</p>
+<p><img alt="alt text" src="../../_images/image-4.png" /></p>
+<p>上圖各數值公式整理如下：</p>
+<ul>
+<li><p>IC平均值：回測期間所有t日的RankIC總和取平均，判斷因子預測能力顯著與否，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{RankIC} = \frac{1}{N} \sum_{t=1}^{N} \text{RankIC}_t
+    \]</div>
+<p>其中N為總樣本期間。
+<br></p>
+</li>
+<li><p>IC標準差：回測期間所有t日的RankIC值取標準差，判斷因子預測能力穩定與否，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \sigma(\text{RankIC}) = \text{Std}(\text{RankIC}_t), \quad t \in [0, N]
+    \]</div>
+<p>其中N為總樣本期間。
+<br></p>
+</li>
+<li><p>風險調整後IC（IR）：將IC平均值除以同期間IC標準差，判斷因子預測能力有效性，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{IR} = \frac{\text{RankIC}}{\sigma(\text{RankIC})}
+    \]</div>
+  <br>
+</li>
+<li><p>IC統計T、P值：計算IC平均值是否顯著異於0，判斷因子預測能力是否統計上顯著，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    t = \frac{\text{RankIC} - \mu_0}{s / \sqrt{n}}
+    \]</div>
+<div class="math notranslate nohighlight">
+\[
+    p = P(T \geq |t| \mid H_0^a)
+    \]</div>
+<p>其中<span class="math notranslate nohighlight">\(μ_0\)</span>為虛無假設下之檢定值，此處為0；s為樣本標準差；n為樣本大小。<span class="math notranslate nohighlight">\(P(T \geq |t| \mid H_0^a)\)</span>則為t統計量的累積機率。</p>
+  <br>
+</li>
+<li><p>IC偏度、峰度：計算IC值分布的對稱性與集中程度，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    IC_{\text{skew}} = \frac{1}{n} \sum_{i=1}^{n} \frac{(x_i - \bar{x})^3}{s^3}
+    \]</div>
+<div class="math notranslate nohighlight">
+\[
+    IC_{\text{kurt}} = \frac{1}{n} \sum_{i=1}^{n} \frac{(x_i - \bar{x})^4}{s^4}
+    \]</div>
+<p>其中<span class="math notranslate nohighlight">\(x_i\)</span>為第i日的RankIC值；x為整個樣本期間的RankIC平均值；n為總樣本期間。
+<br></p>
+</li>
+<li><p>IC大於0%比例：統計每一個t日IC值高於0%占整個樣本期間比例，判斷因子預測能力方向穩定性。
+<br></p></li>
+<li><p>每月IC值：為該月份每一個t日IC值總和取平均。
+<br></p></li>
+<li><p>累加IC值：回測期間每一個t日IC值累加，判斷因子預測能力在時序列上是否具有單調性。</p></li>
+</ul>
+</section>
 <section id="id2">
-<h2><span class="section-number">2.1. </span>交易市場<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>選擇股票於t日所屬之交易市場，提供上下市櫃、上下市與上下櫃。</p>
+<h2><span class="section-number">2.2. </span>分組報酬單調性<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 </section>
 <section id="id3">
-<h2><span class="section-number">2.2. </span>產業篩選<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>選擇股票於t日所屬之產業，提供全產業、排除營造、排除金融與全電子業。</p>
-</section>
-<section id="id4">
-<h2><span class="section-number">2.3. </span>個股市值<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>篩選股票於t日是否位於指定的區間內，可選擇0 ~ 100%區間。如調整為10 ~100%代表選擇t日時股票市值大於等於10%且小於等於100%之股票。</p>
-<p>註：若將區間調整過小（e.g. 99 ~ 100%），恐導致股票數過少而讓因子分組失敗。</p>
-</section>
-<section id="id5">
-<h2><span class="section-number">2.4. </span>回測歷史<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>回測歷史為因子值最新一日時間點，減去一年、三年、五年與十年做為因子檢測的起始時間。</p>
-</section>
-<section id="id6">
-<h2><span class="section-number">2.5. </span>再平衡頻率<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p>提供投組於每月初（每月首個交易日）、每週初（每週首個交易日）或每日初，根據公司最新的因子值更換其因子分組與組內的權重值。</p>
-</section>
-<section id="id7">
-<h2><span class="section-number">2.6. </span>排除股票<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-<p>排除股票於t日被列為全額交割、警示或處置的股票。</p>
+<h2><span class="section-number">2.3. </span>分組週轉率<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -410,7 +453,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./_parts\part2"
+            path: "./_parts\part3"
         },
         predefinedOutput: true
     }
@@ -433,17 +476,8 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>多因子合成方法</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../part3/chapter1.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">1. </span>敘述統計</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -461,12 +495,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 交易市場</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 產業篩選</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 個股市值</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 回測歷史</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.5. 再平衡頻率</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6. 排除股票</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ic">2.1. IC資訊係數檢定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2. 分組報酬單調性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3. 分組週轉率</a></li>
 </ul>
   </nav></div>
 

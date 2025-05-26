@@ -27,3 +27,24 @@ parts:
      - file: _parts/part2/chapter2
        title: 股票池與回測期間參數
 
+  - caption: 因子檢測分析
+    numbered: True
+    permalink: false
+    chapters:
+     - file: _parts/part3/chapter1
+       title: 敘述統計
+
+     - file: _parts/part3/chapter2
+       title: 因子分析
+
+     - file: _parts/part3/chapter3
+       title: 投組分析
+
+     - file: _parts/part3/chapter4
+       title: 風險分析
+
+     - file: _parts/part3/chapter5
+       title: 泛用性分析
+
+     - file: _parts/part3/chapter6
+       title: 學術檢定

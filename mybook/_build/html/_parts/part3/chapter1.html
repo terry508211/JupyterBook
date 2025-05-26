@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. 股票池與回測期間參數 &#8212; FactorLib 因子分析平台</title>
+    <title>1. 敘述統計 &#8212; FactorLib 因子分析平台</title>
   
   
   
@@ -57,12 +57,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_parts/part2/chapter2';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_parts/part3/chapter1';</script>
     <link rel="icon" href="../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1. 敘述統計" href="../part3/chapter1.html" />
-    <link rel="prev" title="1. 多因子合成方法" href="chapter1.html" />
+    <link rel="next" title="2. 因子分析" href="chapter2.html" />
+    <link rel="prev" title="2. 股票池與回測期間參數" href="../part2/chapter2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,14 +188,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../part1/chapter4.html">4. 策略Studio</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">因子檢測流程</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="chapter1.html">1. 多因子合成方法</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 股票池與回測期間參數</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part2/chapter1.html">1. 多因子合成方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part2/chapter2.html">2. 股票池與回測期間參數</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">因子檢測分析</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../part3/chapter1.html">1. 敘述統計</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../part3/chapter2.html">2. 因子分析</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. 敘述統計</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">2. 因子分析</a></li>
 </ul>
 
     </div>
@@ -250,7 +250,7 @@
       
       
       
-      <li><a href="../../_sources/_parts/part2/chapter2.md" target="_blank"
+      <li><a href="../../_sources/_parts/part3/chapter1.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +334,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>股票池與回測期間參數</h1>
+    <h1>敘述統計</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -344,12 +344,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 交易市場</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 產業篩選</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 個股市值</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 回測歷史</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.5. 再平衡頻率</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6. 排除股票</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 因子值分布</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2. 股票樣本</a></li>
 </ul>
             </nav>
         </div>
@@ -362,38 +358,27 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">2. </span>股票池與回測期間參數<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>前面步驟選擇完因子後，將針對股票池與回測期間進行調整，主要根據股票於再平衡t日時所屬的交易市場、產業別、市值大小和交易限制（警示股、全額交割股）等狀況進行排除。</p>
-<p><img alt="看板1" src="../../_images/test5.png" /></p>
-<p>註：因子檢測股票池篩選順序為交易市場 → 產業別 → 交易限制 → 市值大小 → 因子分組。</p>
+<h1><span class="section-number">1. </span>敘述統計<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>觀察因子投組於再平衡t日的因子值分布狀況與股票之市值、成交金額和成交張數等特徵值狀況。</p>
 <!-- :::{contents}
 :local:
 :depth: 2
 ::: -->
 <section id="id2">
-<h2><span class="section-number">2.1. </span>交易市場<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>選擇股票於t日所屬之交易市場，提供上下市櫃、上下市與上下櫃。</p>
+<h2><span class="section-number">1.1. </span>因子值分布<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>呈現單因子或複合因子經過前處理調整各階段後的機率密度分布圖、箱型圖，以及各階段的敘述統計數據，如下圖1為使用mom52wh（創一年新高動能因子）和mom6（六個月期動能因子）與sue（未預期盈餘）所等權重合成出的複合因子。</p>
+<p><img alt="alt text" src="../../_images/image-2.png" /></p>
 </section>
 <section id="id3">
-<h2><span class="section-number">2.2. </span>產業篩選<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>選擇股票於t日所屬之產業，提供全產業、排除營造、排除金融與全電子業。</p>
-</section>
-<section id="id4">
-<h2><span class="section-number">2.3. </span>個股市值<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>篩選股票於t日是否位於指定的區間內，可選擇0 ~ 100%區間。如調整為10 ~100%代表選擇t日時股票市值大於等於10%且小於等於100%之股票。</p>
-<p>註：若將區間調整過小（e.g. 99 ~ 100%），恐導致股票數過少而讓因子分組失敗。</p>
-</section>
-<section id="id5">
-<h2><span class="section-number">2.4. </span>回測歷史<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>回測歷史為因子值最新一日時間點，減去一年、三年、五年與十年做為因子檢測的起始時間。</p>
-</section>
-<section id="id6">
-<h2><span class="section-number">2.5. </span>再平衡頻率<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p>提供投組於每月初（每月首個交易日）、每週初（每週首個交易日）或每日初，根據公司最新的因子值更換其因子分組與組內的權重值。</p>
-</section>
-<section id="id7">
-<h2><span class="section-number">2.6. </span>排除股票<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-<p>排除股票於t日被列為全額交割、警示或處置的股票。</p>
+<h2><span class="section-number">1.2. </span>股票樣本<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>統計各個因子投組位於每個再平衡日的總市值、成交金額與成交張數的占比資訊，協助使用者分析投組樣本的股市特徵，按照下列區間進行計算：</p>
+<ul class="simple">
+<li><p>總市值（億元）：十億（含）以下、十億至一百億（含）、一百億至一千億（含）、一千億以上等四個區間。</p></li>
+<li><p>成交金額（百萬元）：一百萬（含）以下、一百萬至一千萬（含）、一千萬至一億（含）、一億至十億（含）、十億以上等五個區間。</p></li>
+<li><p>成交張數：一百張（含）以下、一百張至一千張（含）、一千張至一萬張（含）、一萬張至十萬張（含）、十萬張以上等五個區間。</p></li>
+</ul>
+<p>上述計算完每個再平衡日各區間的占比後再取平均值。</p>
+<p><img alt="alt text" src="../../_images/image-3.png" /></p>
 </section>
 </section>
 
@@ -410,7 +395,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./_parts\part2"
+            path: "./_parts\part3"
         },
         predefinedOutput: true
     }
@@ -428,20 +413,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="chapter1.html"
+       href="../part2/chapter2.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>多因子合成方法</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>股票池與回測期間參數</p>
       </div>
     </a>
     <a class="right-next"
-       href="../part3/chapter1.html"
+       href="chapter2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>敘述統計</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>因子分析</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -461,12 +446,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 交易市場</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 產業篩選</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 個股市值</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 回測歷史</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.5. 再平衡頻率</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6. 排除股票</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 因子值分布</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2. 股票樣本</a></li>
 </ul>
   </nav></div>
 
