@@ -127,7 +127,7 @@
             </tr>
             <tr style="background-color: #f9f9f9;">
             <td style="border: 1px solid black; padding: 8px;">介於 min~max</td>
-            <td style="border: 1px solid black; padding: 8px;">20、80</td>
+            <td style="border: 1px solid black; padding: 8px;">20, 80</td>
             <td style="border: 1px solid black; padding: 8px;">若欄位值介於 20%~80% 之間的股票並標記為 True。</td>
             </tr>
         </tbody>

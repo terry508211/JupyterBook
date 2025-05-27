@@ -19,4 +19,3 @@
 
 ![看板4](../../_static/studio_demo1_speedup.gif "studio2")
 
-
