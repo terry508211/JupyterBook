@@ -63,6 +63,7 @@
     <link rel="icon" href="../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. 投組分析" href="chapter3.html" />
     <link rel="prev" title="1. 敘述統計" href="chapter1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -197,6 +198,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="chapter1.html">1. 敘述統計</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 因子分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. 投組分析</a></li>
 </ul>
 
     </div>
@@ -431,12 +433,155 @@ N日依照使用者前面選擇的投組再平衡頻率各有不同，若選擇�
 <br></p></li>
 <li><p>累加IC值：回測期間每一個t日IC值累加，判斷因子預測能力在時序列上是否具有單調性。</p></li>
 </ul>
+<p><img alt="alt text" src="../../_images/image-6.png" /></p>
+<ul>
+<li><p>產業分組IC：依照證交所與櫃買中心產業分類計算各產業IC平均值，此處不特別區分交易市場，只依據所屬產業進行計算，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{IndustryIC} = \frac{1}{N} \sum_{t=1}^{N} \text{RankIC}_{c,t}
+    \]</div>
+<div class="math notranslate nohighlight">
+\[
+    \text{RankIC}_{c,t} = \text{Corr}(x_{\text{rank}}^t,\ \text{ret}_{\text{rank}}^{t+N})
+    \]</div>
+<p>其中
+<span class="math notranslate nohighlight">\(IndustryIC_{j}\)</span>為j產業在樣本期間的IC平均值；
+N為總樣本期間；<span class="math notranslate nohighlight">\(RankIC_{t,j}\)</span>為j產業下每一個t日中，屬於j產業的個股t日因子值和t+N日報酬之Spearman相關係數。</p>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>各因子投組IC值平均：依照每個再平衡日每檔個股的因子分組計算不同組別的IC平均值，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{GroupIC}_g = \frac{1}{N} \sum_{t=1}^{N} \text{RankIC}_{g,t}
+    \]</div>
+<div class="math notranslate nohighlight">
+\[
+    \text{RankIC}_{g,t} = \text{Corr}(x_{\text{rank}}^t,\ \text{ret}_{\text{rank}}^{t+N})
+    \]</div>
+<p>其中
+<span class="math notranslate nohighlight">\(GroupIC_{g}\)</span>為第g因子分組在樣本期間的IC平均值；
+N為總樣本期間；<span class="math notranslate nohighlight">\(GroupIC_{t,g}\)</span>為第g因子分組下每一個t日中，屬於第g因子分組的個股t日因子值和t+N日報酬之Spearman相關係數。</p>
+</li>
+</ul>
+<br>
+<p><img alt="alt text" src="../../_images/image-7.png" /></p>
+<ul>
+<li><p>因子 IC 積延長變數化（Lag IC）：</p>
+<p>計算每一個t日因子值與未來t+N+lag日個股報酬率的Spearman相關係數，判斷因子的預測能力會在lag幾日後有較明顯的衰退，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{LagIC}_{\text{lag}} = \text{Corr}(x_{\text{rank}}^{t - \text{lag}},\ \text{ret}_{\text{rank}}^{t+N}), \quad \text{lag} \in [1, 21]
+    \]</div>
+<p>其中
+<span class="math notranslate nohighlight">\(\text{LagIC}_{\text{lag}}\)</span>為因子經過lag日後的RankIC值，使用第t-lag日的排序後因子值<span class="math notranslate nohighlight">\(x_{\text{rank}}^{t - \text{lag}}\)</span>與t日至t+N日的排序後個股報酬連乘計算Spearman相關係數；
+若投組為每月初再平衡則N為21，每週初則N為5，每日初則N為1。</p>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>因子 IC 穩定性變數化（Holding IC）：</p>
+<p>計算每一個t日因子值與未來t+n日個股報酬率的Spearman相關係數，判斷使用該因子較適合預測未來幾日後的個股報酬，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{HoldingIC}_n = \text{Corr}(x_{\text{rank}}^{t},\ \text{ret}_{\text{rank}}^{t+n}), \quad n \in [1, 21]
+    \]</div>
+<p>其中
+<span class="math notranslate nohighlight">\(\text{HoldingIC}_n\)</span>為因子持有n日後的RankIC值，使用第t日的排序後因子值<span class="math notranslate nohighlight">\(x_{\text{rank}}^{t}\)</span>與t日至t+n日的排序後個股報酬連乘計算Spearman相關係數。</p>
+</li>
+</ul>
 </section>
 <section id="id2">
 <h2><span class="section-number">2.2. </span>分組報酬單調性<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>使用前瞻報酬（Forward Return）分析因子是否具有單調遞增或遞減特性，也就是使用該因子去選股時，當選擇因子值越大之個股，該個股未來的報酬率越高或報酬率越低，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+\text{forward return}_{i,t} = \prod_{t=1}^{n} \left(1 + \text{return}_{i,t}\right)
+\]</div>
+<p>其中<span class="math notranslate nohighlight">\(\text{forward return}_{i,t}\)</span>為i個股於t日之前瞻報酬，使用t日至t+n日報酬率連乘而來，當投組為每月初再平衡時n為21；每週初再平衡時n為5；每日初再平衡時n為1。</p>
+<p><img alt="alt text" src="../../_images/image-8.png" /></p>
+<ul>
+<li><p>前瞻報酬平均：計算各個因子投組下前瞻報酬於樣本期間的平均值，分析該因子是否具有單調遞增或遞減特性，也就是使用該因子去選股時，當選擇因子值越大之個股，該個股未來的報酬率越高或報酬率越低，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{Forward Return}_g = \text{Mean}(\text{Forward Return}_{g,t}),\quad t \in [0, N]
+    \]</div>
+<div class="math notranslate nohighlight">
+\[
+    \text{Forward Return}_{g,t} = \sum_{i=1}^{k} w_{i,g,t} \cdot \text{forward return}_{i,g,t}
+    \]</div>
+<p>其中
+<span class="math notranslate nohighlight">\(\text{Forward Return}_g\)</span>為第g因子分組的前瞻報酬樣本期間平均；N為總樣本期間；
+<span class="math notranslate nohighlight">\(\text{Forward Return}_{g,t}\)</span>為第g因子分組於t日的前瞻報酬加權總和；
+<span class="math notranslate nohighlight">\(w_{i,g,t}\)</span>為i個股於第g因子分組於t日之權重；k為t日所有屬於第g因子分組之個股總數；
+<span class="math notranslate nohighlight">\(\text{forward return}_{i,g,t}\)</span>為i個股於第g因子分組於t日之前瞻報酬。</p>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>前瞻報酬標準差：計算各個因子投組下前瞻報酬於樣本期間的標準差，分析各因子投組前瞻報酬的時序列穩定度，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \sigma(\text{Forward Return}_g) = \text{Std}(\text{Forward Return}_{g,t}),\quad t \in [0, N]
+    \]</div>
+<div class="math notranslate nohighlight">
+\[
+    \text{Forward Return}_{g,t} = \sum_{i=1}^{k} w_{i,g,t} \cdot \text{forward return}_{i,g,t}
+    \]</div>
+<p>其中
+<span class="math notranslate nohighlight">\(σ_{g}\)</span>為第g因子分組在回測期間的前瞻報酬標準差；N為總樣本期間；
+<span class="math notranslate nohighlight">\(\text{Forward Return}_{g,t}\)</span>為第g因子分組於t日的前瞻報酬加權總和；
+<span class="math notranslate nohighlight">\(w_{i,g,t}\)</span>為i個股於第g因子分組於t日之權重；k為t日所有屬於第g因子分組之個股總數；
+<span class="math notranslate nohighlight">\(\text{forward return}_{i,g,t}\)</span>為i個股於第g因子分組於t日之前瞻報酬。</p>
+</li>
+</ul>
+<br>
+<p><img alt="alt text" src="../../_images/image-9.png" /></p>
+<ul>
+<li><p>前瞻風險調整後報酬：計算各個因子投組下前瞻報酬於樣本期間的有效性，使用前瞻報酬平均除以同期間前瞻報酬標準差，公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\text{Forward Return}_g}{\sigma(\text{Forward Return})_g}
+    \]</div>
+</li>
+</ul>
+<br>
+<ul class="simple">
+<li><p>各因子投組下不同市值前瞻報酬平均：根據因子投組中成分股於t日的市值切分為大、中、小三個（1 ~ 33%、34 ~ 66%、67 ~ 100%）同等數量的子投組，並計算該子投組前瞻報酬平均值，分析每個因子投組中前瞻報酬是否多集中於特定市值區間。</p></li>
+</ul>
 </section>
 <section id="id3">
 <h2><span class="section-number">2.3. </span>分組週轉率<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>分析因子訊號穩定度，穩定度較高意味較低的換股頻率，交易時造成的摩擦成本也較低，但也可能代表該因子對股市變化反應較慢；反之，穩定度較低雖然換股頻率較高，摩擦成本也較高，但也可能代表該因子反應股市變化較為迅速，能夠即時更新投組。因此，週轉率高低並不一定代表單方面的好壞，而是需要與因子預測能力（IC）和分組報酬進行統一分析。
+此處使用各因子投組於再平衡日更換的成分股比例，以及因子值相對於自身歷史n天前因子值的自我相關性兩塊來檢驗因子週轉率。</p>
+<p><img alt="alt text" src="../../_images/image-10.png" /></p>
+<ul>
+<li><p>各因子投組週轉率：</p>
+<p>計算各因子投組於t期再平衡日相較於t-1期的換股比例，高週轉率意味較高換股成本，可能進一步侵蝕投組報酬，但也可能有助於即時撤換掉將下跌的成分股。公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{Turnover}_{g,t} = \frac{\text{Diff}(\text{Group}_{g,t},\ \text{Group}_{g,t-1})}{\text{Total}(\text{Group}_{g,t-1})}
+    \]</div>
+<p>其中
+<span class="math notranslate nohighlight">\(\text{Turnover}_{g,t}\)</span>為第g因子投組於t期的週轉率；
+<span class="math notranslate nohighlight">\({\text{Diff}(\text{Group}_{g,t},\ \text{Group}_{g,t-1})}\)</span>為第g因子投組於t期的成分股相對於t-1期成分股的差異數；
+<span class="math notranslate nohighlight">\(\text{Group}_{g,t-1}\)</span>為第g因子投組於t-1期的成分股。</p>
+</li>
+</ul>
+<p><img alt="alt text" src="../../_images/image-11.png" /></p>
+<ul>
+<li><p>因子值自我相關性：
+因子每個t日與過去t-n日因子值的Spearman相關係數，若自我相關性高則代表因子值變化較慢；反之，自我相關性低則代表因子值變化速度較快。公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{Autocorrelation}_n = \text{Corr}(\text{factor}_t,\ \text{factor}_{t-n}),\quad n \in [1, 21]
+    \]</div>
+<p>其中
+<span class="math notranslate nohighlight">\(\text{Autocorrelation}_t\)</span>為因子於t日的自我相關性；
+<span class="math notranslate nohighlight">\(\text{Corr}(\text{factor}_t,\ \text{factor}_{t-n})\)</span>為每檔個股於t日的因子數值與t-n日因子數值的Spearman相關係數。</p>
+</li>
+</ul>
 </section>
 </section>
 
@@ -478,6 +623,15 @@ N日依照使用者前面選擇的投組再平衡頻率各有不同，若選擇�
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">1. </span>敘述統計</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="chapter3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>投組分析</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
