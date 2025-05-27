@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6. 學術檢定 &#8212; FactorLib 因子分析平台</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_parts/part3/chapter6';</script>
+    <link rel="icon" href="../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1. 節點總覽" href="../part4/chapter1.html" />
+    <link rel="prev" title="5. 泛用性分析" href="chapter5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="FactorLib 因子分析平台 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="FactorLib 因子分析平台 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    首頁
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">頁面操作</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part1/chapter1.html">1. 因子總覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part1/chapter2.html">2. 因子看板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part1/chapter3.html">3. 因子檢測</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part1/chapter4.html">4. 策略Studio</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">因子檢測流程</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part2/chapter1.html">1. 多因子合成方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part2/chapter2.html">2. 股票池與回測期間參數</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">因子檢測分析</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">1. 敘述統計</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">2. 因子分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. 投組分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">4. 風險分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">5. 泛用性分析</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. 學術檢定</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">策略Studio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part4/chapter1.html">1. 流程圖節點總覽</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/_parts/part3/chapter6.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>學術檢定</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newey-west">6.1. Newey-West檢定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grs">6.2. GRS檢定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hj-distance">6.3. HJ-distance檢定</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">6. </span>學術檢定<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>以更嚴謹的學術理論來解釋因子投組報酬，並且與常見的CAPM、FamaFrench-3因子與FamaFrench-5因子模型進行比較，看因子投組報酬在被這些模型解釋同時能否賺取超額報酬(alpha)。</p>
+<!-- :::{contents}
+:local:
+:depth: 2
+::: -->
+<section id="newey-west">
+<h2><span class="section-number">6.1. </span>Newey-West檢定<a class="headerlink" href="#newey-west" title="Link to this heading">#</a></h2>
+<p>使用因子模型檢驗投資組合是否存在超額報酬（alpha）時，本文提供了兩種檢驗方法：General 與 Newey-Test。</p>
+<ul class="simple">
+<li><p>General 方法：透過傳統的 alpha估計方式，利用 CAPM、Fama-French 三因子或五因子模型對投組的超額報酬進行回歸，估計出alpha並以 t 檢定判斷是否具有顯著的超額報酬。</p></li>
+<li><p>Newey-Test 方法：由於傳統方法未調整異質性（Heteroskedasticity）及自我相關性（Autocorrelation），可能導致參數標準誤偏差，進而使 t 值失真。因此在 Newey-Test 中，我們在 OLS 回歸時設定共變異數矩陣為 HAC（Heteroskedasticity and Autocorrelation Consistent），並採用 Lag = 4 * (T / 100 ) ** ( 2 / 9 )的方式（其中 T 為樣本期數）來確定回歸殘差的自我相關調整範圍，藉此放大標準差、縮小 t 值，降低過度拒絕（Type I Error）的風險。若Newey-Test 方法檢定結果與經典的 t 檢定相反，則說明該因子的解釋能力可能是由異質性或自我相關性導致。</p></li>
+</ul>
+<p><img alt="alt text" src="../../_images/image-21.png" />
+<img alt="alt text" src="../../_images/image-22.png" /></p>
+<p>總結而言，General 方法可快速檢驗超額報酬是否顯著；而 Newey-Test 方法則在估計過程中進一步考量了異質性與自我相關性，使其檢定結果更為穩健。
+<br></p>
+</section>
+<section id="grs">
+<h2><span class="section-number">6.2. </span>GRS檢定<a class="headerlink" href="#grs" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>假設有 1000 支股票，其中 900 支的 CAPM 模型 alpha 不顯著，僅有 100 支具有顯著的alpha。經典的 t 檢定會拒絕 CAPM 模型，在這種情況下，是否應該認為 CAPM 模型成立？還是需要進一步檢驗？</p></li>
+<li><p>Gibbons, Ross 和 Shanken（1989）提出的 GRS 檢定，旨在針對一組資產或股票的共同超額報酬（alpha）進行「聯合為零」的檢定。相較於僅針對單一股票進行 alpha 的 t 檢定，GRS 檢定可以一次檢驗所有候選股票的 alpha 是否同時為零。</p></li>
+</ul>
+<p><img alt="alt text" src="../../_images/image-23.png" /></p>
+<ul class="simple">
+<li><p>若 GRS 檢定的統計量不顯著，代表在特定的假設條件下，模型可以有效解釋所有股票的報酬，並無任何顯著超額報酬；反之，<em><strong>若檢定結果顯著，則意味著存在某些投組無法被模型解釋，顯示該模型的定價能力不足</strong></em>，需要進一步探討或加入其他因子來修正模型。透過這樣的「整體檢定」，研究者可以避免僅憑局部（例如某些股票或投組）出現顯著 alpha 就完全否定模型的可能性，也能更全面地評估模型在解釋市場報酬上的完整度。</p></li>
+<li><p>若GRS 檢定結果與經典的 t 檢定相反，則<em><strong>說明該因子的解釋能力可能是由分組間相關性</strong></em>導致。</p></li>
+<li><p>註：GRS檢定目前僅支援日頻
+<br></p></li>
+</ul>
+</section>
+<section id="hj-distance">
+<h2><span class="section-number">6.3. </span>HJ-distance檢定<a class="headerlink" href="#hj-distance" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Hansen-Jagannathan (HJ) 距離是由 Lars Peter Hansen 與 Ravi Jagannathan（1991）提出的一種檢驗資產定價模型有效性的統計方法。它的核心概念在於測量模型所造成的定價誤差（misspecification），若該誤差明顯存在，便代表現有模型無法充分解釋資產的報酬。</p></li>
+<li><p>在一般檢驗因子定價時，若預設模型已「正確規範（correctly specified）」，傳統方法計算出的標準誤可能低估了模型的可能誤差，導致錯誤結論。相較之下，HJ 距離能在考量模型錯誤規範的情況下，檢驗資產定價是否存在顯著的「不可解釋部分」。</p></li>
+</ul>
+<p><img alt="alt text" src="../../_images/image-24.png" /></p>
+<ul class="simple">
+<li><p>若 HJ 距離檢定的 p 值顯著，代表該模型存在無法解釋的定價誤差，需要將本次分析的「因子異象」納入模型才能更好地解釋報酬來源。</p></li>
+<li><p>反之，若 p 值不顯著，則顯示現行模型已能良好解釋投資組合的報酬，不需要另外加入新因子。</p></li>
+<li><p>註：HJ-distance檢定目前僅支援日頻</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_parts\part3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>泛用性分析</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../part4/chapter1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>節點總覽</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newey-west">6.1. Newey-West檢定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grs">6.2. GRS檢定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hj-distance">6.3. HJ-distance檢定</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 黃天瑜
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

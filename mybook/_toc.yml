@@ -48,3 +48,16 @@ parts:
 
      - file: _parts/part3/chapter6
        title: 學術檢定
+
+  - caption: 策略Studio
+    numbered: True
+    permalink: false
+    chapters:
+     - file: _parts/part4/chapter1
+       title: 流程圖節點介紹
+
+     - file: _parts/part4/chapter2
+       title: 節點詳細說明
+
+     - file: _parts/part4/chapter3
+       title: 操作範例

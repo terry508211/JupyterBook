@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. 節點詳細說明 &#8212; FactorLib 因子分析平台</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_parts/part4/chapter2';</script>
+    <link rel="icon" href="../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. 操作範例" href="chapter3.html" />
+    <link rel="prev" title="1. 流程圖節點介紹" href="chapter1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="FactorLib 因子分析平台 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="FactorLib 因子分析平台 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    首頁
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">頁面操作</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part1/chapter1.html">1. 因子總覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part1/chapter2.html">2. 因子看板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part1/chapter3.html">3. 因子檢測</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part1/chapter4.html">4. 策略Studio</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">因子檢測流程</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part2/chapter1.html">1. 多因子合成方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part2/chapter2.html">2. 股票池與回測期間參數</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">因子檢測分析</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part3/chapter1.html">1. 敘述統計</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part3/chapter2.html">2. 因子分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part3/chapter3.html">3. 投組分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part3/chapter4.html">4. 風險分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part3/chapter5.html">5. 泛用性分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part3/chapter6.html">6. 學術檢定</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">策略Studio</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">1. 流程圖節點介紹</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 節點詳細說明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. 操作範例</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/_parts/part4/chapter2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>節點詳細說明</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 資料載入</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 條件計算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 回測產出</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">2. </span>節點詳細說明<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>詳述各節點功能、可輸入之參數、可接入之節點與可輸出之節點與所有相關的注意事項。</p>
+<section id="id2">
+<h2><span class="section-number">2.1. </span>資料載入<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>流程圖節點的基礎單位，分為最新資料、歷史資料與通用欄位方況等三種，每次回測或表格之產出均需要至少一個資料載入相關的節點在流程圖其中。目前提供之資料表有股價資料、籌碼資料、公司自結數、會計師簽證財務資料與月營收（版本別）</p>
+<ul>
+<li><p>最新資料</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image1.png" /></p>
+</div>
+<ul class="simple">
+<li><p>功能：產出指定股票池中所有公司最新一日資料欄位，若該欄位有版本別註記，則產出則會調整為當下時間點所能看到之最新版本資料。</p></li>
+<li><p>參數1：公司自結數、會計師簽證財務資料、股價資料、月營收（版本別）、籌碼資料（日）。</p></li>
+<li><p>參數2：參數1中所對應的資料欄位名稱，可參考策略Studio右上角之「資料欄位查詢」。</p></li>
+<li><p>上游可連線節點：無。</p></li>
+<li><p>下游可連線節點：比較運算、分組運算與Pipeline產出。</p></li>
+</ul>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>歷史資料</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image-1.png" /></p>
+</div>
+<ul class="simple">
+<li><p>功能：產出指定股票池中所有公司歷史時間點的資料欄位，若該欄位有版本別註記，則產出則會調整為當下時間點所能看到之最新版本資料。</p></li>
+<li><p>參數1：公司自結數、會計師簽證財務資料、股價資料、月營收（版本別）、籌碼資料（日）。</p></li>
+<li><p>參數2：參數1中所對應的資料欄位名稱，可參考策略Studio右上角之「資料欄位查詢」。</p></li>
+<li><p>參數3：常數值N，作為取過去N日、月或季的依據。</p></li>
+<li><p>參數4：股價籌碼支援N日前；會計與自結數財報支援N日與N季前；月營收支援N日與N月前。</p></li>
+<li><p>上游可連線節點：無。</p></li>
+<li><p>下游可連線節點：比較運算、邏輯運算、分組運算與Pipeline產出。</p></li>
+</ul>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>通用欄位方塊</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image-25.png" /></p>
+</div>
+<ul class="simple">
+<li><p>功能：產出一指定的欄位名稱與欄位數值，主要用作比較運算中的判斷基準。</p></li>
+<li><p>參數1：欄位輸出名稱。</p></li>
+<li><p>參數2：欄位數值，可輸入常數、浮點數、文字與布林值。</p></li>
+<li><p>上游可連線節點：無。</p></li>
+<li><p>下游可連線節點：比較運算與Pipeline產出。</p></li>
+</ul>
+</li>
+</ul>
+<br>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.2. </span>條件計算<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>比較運算</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image-31.png" /></p>
+</div>
+<ul class="simple">
+<li><p>功能：x欄位與y欄位之間的關係運算子，讓使用者可針對特定。</p></li>
+<li><p>參數1：大於、大於等於、小於、小於等於、等於和不等於六種選項。</p></li>
+<li><p>參數2：欄位輸出名稱。</p></li>
+<li><p>參數3：買入清單，若打勾則該欄位將用做後續買入股票之依據。</p></li>
+<li><p>參數4：作為遮罩，若打勾則該欄位將用做後續篩選股票的基礎。</p></li>
+<li><p>上游可連線節點：最新資料、歷史資料與通用欄位方塊。</p></li>
+<li><p>下游可連線節點：邏輯運算、分組運算（需作為遮罩）與Pipeline產出。</p></li>
+</ul>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>邏輯運算：</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image-41.png" /></p>
+</div>
+<ul class="simple">
+<li><p>功能：將各個連線的運算子群取聯集（or）或交集（and）。</p></li>
+<li><p>參數1：聯集（or）或交集（and）。</p></li>
+<li><p>參數2：欄位輸出名稱。</p></li>
+<li><p>參數3：買入清單，若打勾則該欄位將用做後續買入股票之依據。</p></li>
+<li><p>參數4：作為遮罩，若打勾則該欄位將用做後續篩選股票的基礎。</p></li>
+<li><p>上游可連線節點：邏輯運算、比較運算。</p></li>
+<li><p>下游可連線節點：邏輯運算、分組運算（需作為遮罩）與Pipeline產出。</p></li>
+</ul>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>分組運算：</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image-5.png" /></p>
+</div>
+<ul class="simple">
+<li><p>功能：將指定資料切割成組別，或篩選出最高/低的N支股票。</p></li>
+<li><p>參數1：等量分N組、等距分N組、最高N檔、最低N檔與介於min~max。</p></li>
+</ul>
+  <table style="border-collapse: collapse; width: 100%; font-size: 14px;">
+      <thead style="background-color: #1f4e78; color: white;">
+          <tr>
+          <th style="border: 1px solid black; padding: 8px; color: white;">選項</th>
+          <th style="border: 1px solid black; padding: 8px; color: white;">參數範例</th>
+          <th style="border: 1px solid black; padding: 8px; color: white;">產出說明</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr style="background-color: #f9f9f9;">
+          <td style="border: 1px solid black; padding: 8px;">等量分 N 組</td>
+          <td style="border: 1px solid black; padding: 8px;">5</td>
+          <td style="border: 1px solid black; padding: 8px;">將某欄位分為每組數量一致的 5 個組別，並標記為 1~5。</td>
+          </tr>
+          <tr style="background-color: #ffffff;">
+          <td style="border: 1px solid black; padding: 8px;">等距分 N 組</td>
+          <td style="border: 1px solid black; padding: 8px;">10</td>
+          <td style="border: 1px solid black; padding: 8px;">將某欄位分為每組數值區間一致的 10 個組別，並標記為 1~10。</td>
+          </tr>
+          <tr style="background-color: #f9f9f9;">
+          <td style="border: 1px solid black; padding: 8px;">最高 N 檔</td>
+          <td style="border: 1px solid black; padding: 8px;">200</td>
+          <td style="border: 1px solid black; padding: 8px;">若欄位值最高的 200 支股票並標記為 True。</td>
+          </tr>
+          <tr style="background-color: #ffffff;">
+          <td style="border: 1px solid black; padding: 8px;">最低 N 檔</td>
+          <td style="border: 1px solid black; padding: 8px;">500</td>
+          <td style="border: 1px solid black; padding: 8px;">若欄位值最低的 500 支股票並標記為 True。</td>
+          </tr>
+          <tr style="background-color: #f9f9f9;">
+          <td style="border: 1px solid black; padding: 8px;">介於 min~max</td>
+          <td style="border: 1px solid black; padding: 8px;">20、80</td>
+          <td style="border: 1px solid black; padding: 8px;">若欄位值介於 20%~80% 之間的股票並標記為 True。</td>
+          </tr>
+      </tbody>
+  </table>
+<ul class="simple">
+<li><p>參數2：參數1分組之依據，僅可輸入常數值。</p></li>
+<li><p>參數3：欄位輸出名稱。</p></li>
+<li><p>參數4：買入清單，若打勾則該欄位將用做後續買入股票之依據。</p></li>
+<li><p>參數5：作為遮罩，若打勾則該欄位將用做後續篩選股票的基礎。</p></li>
+<li><p>上游可連線節點：最新資料、歷史資料、通用欄位方塊、邏輯運算（需作為遮罩）、比較運算（需作為遮罩）。</p></li>
+<li><p>下游可連線節點：邏輯運算（需選擇最高/低Ｎ組與介於min~max等選項）、分組運算（需作為遮罩）與Pipeline產出。</p></li>
+</ul>
+</li>
+</ul>
+<br>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.3. </span>回測產出<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Pipeline產出：</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image-61.png" /></p>
+</div>
+<ul class="simple">
+<li><p>功能：將連結的資料載入與條件計算區塊使用表格呈現，方便使用者查看篩選出的股票。產出之表格會出現在策略Studio下方的Pipeline表格，從中可進行表格切換、查詢日期與關鍵字搜尋。</p></li>
+<li><p>參數1：表格名稱，方便產出多個表格時進行切換。</p></li>
+<li><p>上游可連線節點：最新資料、歷史資料、通用欄位方塊、邏輯運算、比較運算與分組運算。</p></li>
+<li><p>下游可連線節點：回測計算。</p></li>
+</ul>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>交易時間：</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image-71.png" /></p>
+</div>
+<ul class="simple">
+<li><p>功能：提供給回測計算區塊，設定投組再平衡頻率與遞延天數。</p></li>
+<li><p>參數1：再平衡時間點，有每日、每週初/末和每月初/末等五種選項。</p></li>
+<li><p>參數2：遞延時間天數，當前項設定每週初再平衡，而遞延天數設定3則代表每週初的第三個交易日進行再平衡；反之，若選擇每週末並設定天數為2，代表在每週最後一個交易日前兩天進行再平衡。僅可輸入常數項，</p></li>
+<li><p>上游可連線節點：無。</p></li>
+<li><p>下游可連線節點：回測計算。</p></li>
+</ul>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>滑價手續費：</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image-81.png" /></p>
+</div>
+<ul class="simple">
+<li><p>功能：提供給回測計算區塊，設定投組交易時的滑價與手續費成本模型。</p></li>
+<li><p>參數1：滑價模型，提供無滑價、固定基點滑價、交易量滑價、百分比滑價與台股滑價等五種選項。</p></li>
+<li><p>參數2：滑價模型參數，如下表所示。</p></li>
+</ul>
+  <table style="border-collapse: collapse; width: 100%; font-size: 14px;">
+      <thead style="background-color: #1f4e78; color: white;">
+          <tr>
+          <th style="width:15%; border: 1px solid black; padding: 8px; color: white;">選項</th>
+          <th style="width:15%; border: 1px solid black; padding: 8px; color: white;">參數範例</th>
+          <th style="width:70%; border: 1px solid black; padding: 8px; color: white;">範例說明</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr style="background-color: #f9f9f9;">
+          <tr style="background-color: #ffffff;">
+          <td style="border: 1px solid black; padding: 8px;">固定基點滑價</td>
+          <td style="border: 1px solid black; padding: 8px;">10</td>
+          <td style="border: 1px solid black; padding: 8px;">成交價格為price ± 10/2。</td>
+          </tr>
+          <tr style="background-color: #f9f9f9;">
+          <td style="border: 1px solid black; padding: 8px;">交易量滑價</td>
+          <td style="border: 1px solid black; padding: 8px;">0.5, 0.1</td>
+          <td style="border: 1px solid black; padding: 8px;">成交價格為price × [1 ± (0.01 ×min(trading_share, 0.5) ^ 2)]，其中trading_share為該次交易下單股數佔該日成交量之比例，前面參數0.5也代表每筆能成交的最大比例為50%。</td>
+          </tr>
+          <tr style="background-color: #ffffff;">
+          <td style="border: 1px solid black; padding: 8px;">百分比滑價</td>
+          <td style="border: 1px solid black; padding: 8px;">0.01</td>
+          <td style="border: 1px solid black; padding: 8px;">成交價格為 price × (1 ± 0.01)。</td>
+          </tr>
+          <tr style="background-color: #f9f9f9;">
+          <td rowspan="2" style="border: 1px solid black; padding: 8px; vertical-align: top;">台股滑價</td>
+          <td style="border: 1px solid black; padding: 8px;">0.2</td>
+          <td style="border: 1px solid black; padding: 8px;">
+              成交價格為 price ± (2 × tick_diff)，0.1 代表參數是股價的最大比例約為 10%。<br>
+              其中 tick_diff 為證交所股票價格的單位跳動。
+          </td>
+          </tr>
+      </tbody>
+  </table>
+<ul class="simple">
+<li><p>參數3：手續費模型，如下表所示。</p></li>
+</ul>
+  <table style="border-collapse: collapse; width: 100%; font-size: 14px;">
+      <thead style="background-color: #1f4e78; color: white;">
+          <tr>
+          <th style="width:15%; border: 1px solid black; padding: 8px; color: white;">選項</th>
+          <th style="width:15%; border: 1px solid black; padding: 8px; color: white;">參數範例</th>
+          <th style="width:70%; border: 1px solid black; padding: 8px; color: white;">範例說明</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr style="background-color: #f9f9f9;">
+          <td style="border: 1px solid black; padding: 8px;">每交易股數</td>
+          <td style="border: 1px solid black; padding: 8px;">0.001, 1</td>
+          <td style="border: 1px solid black; padding: 8px;">每交易 1 股需支付 0.001 元，每筆交易至少 1 元。</td>
+          </tr>
+          <tr style="background-color: #ffffff;">
+          <td style="border: 1px solid black; padding: 8px;">每交易筆數</td>
+          <td style="border: 1px solid black; padding: 8px;">5</td>
+          <td style="border: 1px solid black; padding: 8px;">每完成 1 筆交易即須支付 5 元。</td>
+          </tr>
+          <tr style="background-color: #f9f9f9;">
+          <td style="border: 1px solid black; padding: 8px;">每交易金額</td>
+          <td style="border: 1px solid black; padding: 8px;">0.0015</td>
+          <td style="border: 1px solid black; padding: 8px;">每完成 1 元交易需支付 0.0015 元。</td>
+          </tr>
+          <tr style="background-color: #ffffff;">
+          <td style="border: 1px solid black; padding: 8px;">台股手續費</td>
+          <td style="border: 1px solid black; padding: 8px;">None</td>
+          <td style="border: 1px solid black; padding: 8px;">
+              成交金額乘上券商手續費 0.1425%（最低 20 元）與交易稅 0.3%。
+          </td>
+          </tr>
+      </tbody>
+  </table>
+<ul class="simple">
+<li><p>手續費模型支援無手續費、每交易股數、每交易筆數、每交易金額與台股手續費等五種選項</p></li>
+<li><p>上游可連線節點：無。</p></li>
+<li><p>下游可連線節點：回測計算。</p></li>
+</ul>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>訂單參數：</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image-91.png" /></p>
+</div>
+<ul>
+<li><p>功能：提供給回測計算節點，設定更多關於投組內股票的交易邏輯。</p></li>
+<li><p>參數1：成交時點，分為當日收盤成交與隔日收盤成交兩種。</p></li>
+<li><p>參數2：每檔股票最大槓桿，設定0.8即代表若選出20支股票要交易，則每支股票最多買入總資金的100%/20*0.8即4%。</p></li>
+<li><p>參數3：訂單存活日，僅可輸入常數，設定為0即代表當天下單後，無論訂單是否全部成交均會取消。</p></li>
+<li><p>參數4：下單股數加權模型，提供等權重、市值加權與成交量加權等三種模型，市值加權與成交量加權公式如下：</p>
+<div class="math notranslate nohighlight">
+\[
+        w_{i,t} = \frac{\text{Market Value}_{i,t}}{\sum_{i=1}^{N} \text{Market Value}_{i,t}}
+        \]</div>
+<div class="math notranslate nohighlight">
+\[
+        w_{i,t} = \frac{\text{Trading Amount}_{i,t}}{\sum_{i=1}^{N} \text{Trading Amount}_{i,t}}
+        \]</div>
+<p>其中N為買入清單於t日篩選出的股票。</p>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>回測計算：</p>
+<div class="toggle docutils container">
+<p><img alt="alt text" src="../../_images/image-101.png" /></p>
+</div>
+<ul class="simple">
+<li><p>功能：接收前述Pipeline產出、交易時間、滑價手續費與訂單參數等節點參數，產出準備回測之檔案供使用者選擇。</p></li>
+<li><p>參數1：回測開始之日，可輸入20250501、2025-05-01、2025/05/01等三種格式。</p></li>
+<li><p>參數2：回測結束之日，可輸入20250501、2025-05-01、2025/05/01等三種格式。</p></li>
+<li><p>參數3：本金，僅可輸入常數。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_parts\part4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>流程圖節點介紹</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>操作範例</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 資料載入</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 條件計算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 回測產出</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 黃天瑜
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
